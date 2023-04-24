@@ -140,10 +140,8 @@ where
                             Expr::Lit(_) => AttrType::Literal(Some(value)),
                             _ if key.starts_with("ref") => AttrType::Ref(expr),
                             _ if key.starts_with("on") => AttrType::Event(expr),
-                            Expr::Member(_) => AttrType::ExprAssign(expr),
-                            Expr::Ident(_) => AttrType::ExprAssign(expr),
                             Expr::Call(_) => AttrType::CallAssign(expr),
-                            _ => AttrType::Unsupported(value),
+                            _ => AttrType::ExprAssign(expr),
                         },
                     }
                 } else {

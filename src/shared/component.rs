@@ -30,7 +30,6 @@ where
 
         if let Expr::Ident(id) = &tag_id
             && self.config.built_ins.iter().any(|v| v.as_str() == &id.sym)
-            && id.ctxt.as_u32() == 1
         {
             tag_id = Expr::Ident(self.register_import_method(&id.sym));
         }
